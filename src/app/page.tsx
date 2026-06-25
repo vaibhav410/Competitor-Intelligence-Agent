@@ -1,65 +1,100 @@
-import Image from "next/image";
+import SearchBox from "@/components/SearchBox";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[#0a0a0f] flex flex-col">
+      {/* Background gradient effects */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-20%] left-[20%] w-[600px] h-[600px] bg-indigo-900/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-[-10%] right-[10%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-3xl" />
+        <div className="absolute top-[40%] left-[-10%] w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-3xl" />
+      </div>
+
+      {/* Grid overlay */}
+      <div
+        className="fixed inset-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
+        }}
+      />
+
+      {/* Nav */}
+      <nav className="relative z-10 flex items-center justify-between px-6 py-5 border-b border-gray-800/50">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">
+            <span className="text-white text-sm font-bold">CS</span>
+          </div>
+          <span className="text-white font-semibold tracking-tight">
+            Creative Strategist
+          </span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-gray-600 px-2 py-1 rounded-full border border-gray-800">
+            Competitor Intelligence Agent
+          </span>
         </div>
-      </main>
-    </div>
+      </nav>
+
+      {/* Hero */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-20">
+        {/* Badge */}
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-indigo-800/50 bg-indigo-900/20 mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+          <span className="text-indigo-400 text-xs font-medium">
+            AI-Powered Competitor Research
+          </span>
+        </div>
+
+        {/* Headline */}
+        <h1 className="text-center mb-6">
+          <span className="block text-5xl md:text-7xl font-black text-white tracking-tight leading-none mb-2">
+            Outsmart Your
+          </span>
+          <span className="block text-5xl md:text-7xl font-black tracking-tight leading-none bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Competition
+          </span>
+        </h1>
+
+        <p className="text-gray-500 text-lg md:text-xl text-center max-w-xl mb-12 leading-relaxed">
+          Enter any brand, website, product, or niche. Get a complete competitor
+          intelligence report — ads, hooks, offers, patterns & strategy.
+        </p>
+
+        {/* Search Box */}
+        <SearchBox />
+
+        {/* Feature Pills */}
+        <div className="mt-16 flex flex-wrap justify-center gap-3">
+          {[
+            { icon: "🌐", text: "Website Analysis" },
+            { icon: "📢", text: "Ad Intelligence" },
+            { icon: "🎣", text: "Hook Extraction" },
+            { icon: "🏷️", text: "Offer Analysis" },
+            { icon: "🔮", text: "Winning Patterns" },
+            { icon: "⚔️", text: "SWOT Analysis" },
+            { icon: "💡", text: "Recommendations" },
+            { icon: "📥", text: "PDF / CSV Export" },
+          ].map((f) => (
+            <div
+              key={f.text}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900/60 border border-gray-800/50 text-gray-500 text-sm"
+            >
+              <span>{f.icon}</span>
+              <span>{f.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-gray-800/50 py-4 px-6 text-center">
+        <p className="text-gray-700 text-xs">
+          Creative Strategist · Competitor Intelligence Agent · Powered by
+          Claude AI & Apify
+        </p>
+      </footer>
+    </main>
   );
 }
